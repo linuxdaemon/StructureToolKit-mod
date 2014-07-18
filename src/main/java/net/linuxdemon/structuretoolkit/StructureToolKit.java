@@ -8,13 +8,13 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.linuxdemon.structuretoolkit.proxy.IProxy;
 import net.linuxdemon.structuretoolkit.reference.Reference;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
+@Mod( modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION )
 public class StructureToolKit
 {
-	@Mod.Instance(Reference.MOD_ID)
+	@Mod.Instance( Reference.MOD_ID )
 	public static StructureToolKit instance;
 
-	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
+	@SidedProxy( clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS )
 	public static IProxy proxy;
 
 	@Mod.EventHandler
