@@ -1,0 +1,21 @@
+[
+{
+  "modid": "StructureToolKit",
+  "name": "Structure Tool Kit",
+  "description": "Will store in-game structures in a parsable file format",
+  "version": "${mod_version}",
+  "mcversion": "${minecraft_version}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "linuxdemon"
+  ],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
