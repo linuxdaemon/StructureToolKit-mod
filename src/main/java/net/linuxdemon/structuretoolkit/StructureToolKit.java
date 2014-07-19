@@ -5,6 +5,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.linuxdemon.structuretoolkit.init.ModBlocks;
 import net.linuxdemon.structuretoolkit.init.ModItems;
 import net.linuxdemon.structuretoolkit.proxy.IProxy;
 import net.linuxdemon.structuretoolkit.reference.Reference;
@@ -22,11 +23,13 @@ public class StructureToolKit
 	public void preInit ( FMLPreInitializationEvent event )
 	{
 		ModItems.init();
+		ModBlocks.init();
 	}
 
 	@Mod.EventHandler
 	public void init ( FMLInitializationEvent event )
 	{
+
 	}
 
 	@Mod.EventHandler
