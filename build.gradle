@@ -31,7 +31,7 @@ archivesBaseName = "StructureToolKit"
 
 minecraft {
     version = config.minecraft_version + "-" + config.forge_version
-    
+
     replaceIn "reference/Reference.java"
     replace "@VERSION@", "${config.mod_version}.${System.getenv("BUILD_NUMBER") ?: 0}"
 }
