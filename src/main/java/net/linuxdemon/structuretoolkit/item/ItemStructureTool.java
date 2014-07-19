@@ -1,5 +1,6 @@
 package net.linuxdemon.structuretoolkit.item;
 
+import net.linuxdemon.structuretoolkit.handler.ConfigurationHandler;
 import net.linuxdemon.structuretoolkit.structure.Structure;
 import net.linuxdemon.structuretoolkit.util.NBTHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -86,7 +87,14 @@ public class ItemStructureTool extends ItemGeneric
 					}
 
 					player.addChatComponentMessage( new ChatComponentText( String.format( "Selected area is %d m\u00B3", volume ) ) );
-					Structure.writeOut( world, v1, v2);
+					if ( volume <= ConfigurationHandler.maxSizeSelect )
+					{
+						Structure.writeOut( world, v1, v2);
+					}
+					else
+					{
+						player.addChatComponentMessage( new ChatComponentText( "Area too large, max size can be changed in the configuration file" ) );
+					}
 
 					NBTHelper.setIntArray( itemStack, "v1", new int[] { } );
 					NBTHelper.setIntArray( itemStack, "v2", new int[] { } );
