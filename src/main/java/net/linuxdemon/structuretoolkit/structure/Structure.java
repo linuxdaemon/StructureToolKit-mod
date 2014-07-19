@@ -26,10 +26,11 @@ public class Structure
 		int maxZ = v1[ 2 ] > v2[ 2 ] ? v1[ 2 ] : v2[ 2 ];
 		int minZ = v1[ 2 ] < v2[ 2 ] ? v1[ 2 ] : v2[ 2 ];
 
-		LogHelper.info( String.format( "MinX: %d, MaxX: %d, MinY: %d, MaxY: %d, MinZ: %d, MaxZ: %d", minX, maxX, minY, maxY, minZ, maxZ ) );
+		String data = "";
+
 		LogHelper.info( "Store Air: " + storeAir );
 
-		String basePath = ( ( File ) ( FMLInjectionData.data()[ 6 ] ) ).getAbsolutePath().replace( File.separatorChar, '/' ).replace( "/.", "" );
+		String basePath = ( ( File ) ( FMLInjectionData.data()[ 6 ] ) ).getAbsolutePath().replace( File.separatorChar, '/' ).replace( "/.", "" ) + "/structures";
 		Date date = new Date();
 		String fileName = new Timestamp( date.getTime() ).toString().replace( " ", "_" );
 		LogHelper.info( fileName );
@@ -40,19 +41,18 @@ public class Structure
 			{
 				for ( int z : ContiguousSet.create( Range.closed( minZ, maxZ ), DiscreteDomain.integers() ) )
 				{
-					String blockData = null;
-					LogHelper.info( String.format( "Block: %d %d %d %s", x, y, z, world.getBlock( x, y, z ).getClass().toString() ) );
-
 					if ( ! world.getBlock( x, y, z ).equals( ModBlocks.placeHolder ) )
 					{
-						if ( ! world.getBlock( x, y, z ).equals( Blocks.air ) || storeAir )
+						if ( (world.getBlock( x, y, z ).getClass() != Blocks.air.getClass()) || storeAir )
 						{
-							blockData = String.format("");
+							String blockData = String.format("%d %d %d %s", x - minX, y - minY, z - minZ, world.getBlock( x, y, z ).getClass().toString());
+							data += String.format("%s%n", blockData);
 						}
 					}
 				}
 			}
 		}
+		LogHelper.info( String.format( "Structure data:%n%s", data.replaceAll( String.format( "%n$" ), "" ) ) );
 		return true;
 	}
 

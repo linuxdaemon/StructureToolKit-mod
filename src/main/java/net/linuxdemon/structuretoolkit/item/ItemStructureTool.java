@@ -1,7 +1,6 @@
 package net.linuxdemon.structuretoolkit.item;
 
 import net.linuxdemon.structuretoolkit.structure.Structure;
-import net.linuxdemon.structuretoolkit.util.LogHelper;
 import net.linuxdemon.structuretoolkit.util.NBTHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -23,7 +22,8 @@ public class ItemStructureTool extends ItemGeneric
 	{
 		if ( world.isRemote )
 		{
-			if ( player.isSneaking() )
+			//Currently broken
+			/*if ( player.isSneaking() )
 			{
 				boolean storeAir = NBTHelper.getBoolean( itemStack, "storeAir" );
 				LogHelper.info( "Store Air: " + storeAir );
@@ -39,7 +39,7 @@ public class ItemStructureTool extends ItemGeneric
 					player.addChatComponentMessage( new ChatComponentText( "Storing air on structure capture" ) );
 				}
 				return itemStack;
-			}
+			}*/
 			String coordNumberString = "First";
 			String keyName = "v1";
 			float reach = 5.0F;
@@ -86,8 +86,7 @@ public class ItemStructureTool extends ItemGeneric
 					}
 
 					player.addChatComponentMessage( new ChatComponentText( String.format( "Selected area is %d m\u00B3", volume ) ) );
-					LogHelper.info( NBTHelper.getBoolean( itemStack, "storeAir" ) );
-					Structure.writeOut( world, v1, v2, NBTHelper.getBoolean( itemStack, "storeAir" ) );
+					Structure.writeOut( world, v1, v2);
 
 					NBTHelper.setIntArray( itemStack, "v1", new int[] { } );
 					NBTHelper.setIntArray( itemStack, "v2", new int[] { } );
